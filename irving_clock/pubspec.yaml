@@ -34,6 +34,9 @@ flutter:
     - images/2.0x/bg.png
     - images/2.0x/bg.png
   fonts:
+    - family: digital
+      fonts:
+      - asset: third_party/font/digital.ttf
     - family: Kalam
       fonts:
       - asset: third_party/font/Kalam-Bold.ttf

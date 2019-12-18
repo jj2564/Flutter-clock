@@ -34,14 +34,6 @@ class _IrvingClockState extends State<IrvingClock> {
   void _updateTime() {
     setState(() {
       _dateTime = DateTime.now();
-      print(_dateTime);
-      // Update per minute.
-//      _timer = Timer(
-//        Duration(minutes: 1) -
-//            Duration(seconds: _dateTime.second) -
-//            Duration(milliseconds: _dateTime.millisecond),
-//        _updateTime,
-//      );
       // Update per second.
       _timer = Timer(
         Duration(seconds: 1) - Duration(milliseconds: _dateTime.millisecond),
@@ -52,19 +44,21 @@ class _IrvingClockState extends State<IrvingClock> {
 
   @override
   Widget build(BuildContext context) {
-    final year = DateFormat('YYYY').format(_dateTime);
+
+    final year = DateFormat('yyyy').format(_dateTime);
     final month = DateFormat('MM').format(_dateTime);
     final day = DateFormat('dd').format(_dateTime);
     final hour = DateFormat('HH').format(_dateTime);
     final minute = DateFormat('mm').format(_dateTime);
     final second = DateFormat('ss').format(_dateTime);
     final fontSize = MediaQuery.of(context).size.width / 10;
-    final offset = -fontSize / 7;
 
+    final firstLine = year + "  " + month + "  " + day;
+    final secondLine = hour + ":" + minute + "  " + second;
 
     final textStyle = TextStyle(
-      color: Color(0xFF4A4A4A),
-      fontFamily: 'Kalam',
+      color: Color(0xFF4A4A5A),
+      fontFamily: 'digital',
       fontSize: fontSize,
     );
 
@@ -80,9 +74,8 @@ class _IrvingClockState extends State<IrvingClock> {
           style: textStyle,
           child: Stack(
             children: <Widget>[
-              Positioned(left: 100, top: 0, child: Text(hour)),
-              Positioned(left: 200, top: 0, child: Text(minute)),
-              Positioned(left: 350, top: 0, child: Text(second)),
+              Positioned(left: 30, top: 15,  child: Text(firstLine)),
+              Positioned(left: 30, top: 105,  child: Text(secondLine)),
             ],
           ),
         ),
