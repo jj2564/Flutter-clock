@@ -45,12 +45,12 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
   @override
   void initState() {
     super.initState();
-    _model.addListener(_handleModelChange);
+//    _model.addListener(_handleModelChange);
   }
 
   @override
   void dispose() {
-    _model.removeListener(_handleModelChange);
+//    _model.removeListener(_handleModelChange);
     _model.dispose();
     super.dispose();
   }
@@ -176,15 +176,7 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
     final clock = Center(
       child: AspectRatio(
         aspectRatio: 5 / 3,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 2,
-              color: Theme.of(context).unselectedWidgetColor,
-            ),
-          ),
-          child: widget._clock(_model),
-        ),
+        child: widget._clock(_model),
       ),
     );
 
@@ -207,15 +199,6 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
             child: Stack(
               children: [
                 clock,
-                if (_configButtonShown)
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Opacity(
-                      opacity: 0.7,
-                      child: _configButton(),
-                    ),
-                  ),
               ],
             ),
           ),
